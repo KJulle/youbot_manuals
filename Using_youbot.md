@@ -20,9 +20,59 @@ The arm has to be turned on separately. When the motors are on, there should be 
 
 To turn off the system press and hold the same button and release when the screen shows ??? (peab järgi kontrollima mida see display päriselt näitab)
 
+## Setting up a remote computer
+
+To run the robot remotely you need to set up another computer/laptop with Ubuntu 16.04 and ROS Kinetic on it(there should be a suitable laptop in the room).
+
+--installing packages
+
+**NB! For the next steps the robot and your remote computer have to be in the same network.**
+
+By default the robot should be in the Robotiklubi24 network.
+
+Now you will have to set up the remote connection. For that you will need to know the Youbot's IP address.
+
+First you will have to specify ROS master aka Youbot IP address on the remote computer:
+
+```bash
+$ export ROS_MASTER_URI=http://192.168.x.x:11311
+```
+
+Next, specify the remote computer's own IP:
+
+```bash
+$ export ROS_IP=192.168.x.x
+```
+
+Modify /etc/hosts file in order to resolve master's name to IP:
+
+```bash
+$ sudo gedit /etc/hosts
+```
+
+Add the following line to the end of the file:
+
+```bash
+192.168.x.x    youbot
+```
+
+## Establishing a ssh connection
+
+Now you can use ssh on your remote computer to log into the Youbot's onboard computer.
+
+To establish an ssh connection, enter this to your remote computer's terminal: 
+
+```bash
+$ ssh youbot@192.168.x.x
+```
+
+Now you should be logged into the onboard computer. That means that when you enter commands in the terminal window you have the ssh connection in, the commands will be run on the robot's onboard computer.
+
+If you need more terminal windows with an ssh connection, just use the same command above to  log in.
+
 ## Driving the robot
 
-To control the robot wheels with your keyboard you have to first run the Youbot driver. This also launches roscore, so you don't have to do that yourself.
+To control the robot wheels with your keyboard you have to first run the Youbot driver. This also launches roscore, so you don't have to do that yourself. Run this on the onboard computer.
 
 ```bash
 $ roslaunch youbot_driver_ros_interface youbot_driver.launch
