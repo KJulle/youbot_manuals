@@ -12,13 +12,19 @@ To charge the battery connect both the battery and external power supply to the 
 
 ## Turning on the robot
 
-Press the "ON/OFF"-button for a few seconds to turn on the power for the system. An orange light on the display will indicate that the System has been powered on successfully. If you press and hold the ON/OFF-button again, you can turn off and on other systems of the robot. Release the button when the screen shows the PC off/Motors off. You will need to turn on the motors and PC separately.
+Press the "ON/OFF"-button for a few seconds to turn on the power for the system. An orange light on the display will indicate that the System has been powered on successfully. Now you can turn on the motors and/or PC. To do this, press and hold the power button and when the screen shows PC on release the button to turn on the PC. Repeat the same step, only now release the button when the screen shows Motor on.
 
 The arm has to be turned on separately. When the motors are on, there should be a button on the arm with a red light. To turn on the arm, press the button. The light is green when the arm is turned on.
 
 **NB! When you turn off the power of the arm, it will NOT hold its position and will collapse, so make sure to support the arm when turning it off.**
 
-To turn off the system press and hold the same button and release when the screen shows ??? (peab järgi kontrollima mida see display päriselt näitab)
+To turn off the system press and hold the same button and release when the screen shows System off. You should also power off the PC manually before turning off the system.
+
+If you are logged in with ssh, you can do this by entering:
+
+```bash
+$ sudo shutdown -h now
+```
 
 ## Setting up a remote computer
 
@@ -28,11 +34,21 @@ To run the robot remotely you need to set up another computer/laptop with Ubuntu
 
 **NB! For the next steps the robot and your remote computer have to be in the same network.**
 
-By default the robot should be in the Robotiklubi24 network.
+By default the robot should be in the ??? network.
 
-Now you will have to set up the remote connection. For that you will need to know the Youbot's IP address.
+Now you will have to set up the remote connection. For that you will need to know the Youbot's and the remote computer's IP addresses.
 
-First you will have to specify ROS master aka Youbot IP address on the remote computer:
+To find the Youbot's IP address enter this command to the terminal:
+
+```bash
+$ export ifconfig
+```
+
+Now you should see multiple ethernet devices. The one you need should be wlp2s0's inet addr which should be something like 192.168.x.x.
+
+To get your remote computer's IP, you need to repeat the same step, only the ethernet device name is probably different.
+
+If you have both IP addresses, you will have to specify ROS master aka Youbot IP address on the remote computer:
 
 ```bash
 $ export ROS_MASTER_URI=http://192.168.x.x:11311
@@ -56,7 +72,7 @@ Add the following line to the end of the file:
 192.168.x.x    youbot
 ```
 
-## Establishing a ssh connection
+## Establishing an ssh connection
 
 Now you can use ssh on your remote computer to log into the Youbot's onboard computer.
 

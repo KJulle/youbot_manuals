@@ -72,7 +72,7 @@ $ sudo setcap cap_net_raw+ep devel/lib/youbot_driver_ros_interface/youbot_driver
 $ ifconfig
 ```
  
- You should see multiple devices. Since the EtherCAT is connected to an external USB network card, the name should be something like INSERT DEVICE NAME. This is your EthernetDevice.
+ You should see multiple devices. Since the EtherCAT is connected to an external USB network card, the name should be something like enx00e04c2151d2 (note that this might not be exactly the same, you will have to check it). This is your EthernetDevice.
  
  Now open the Youbot EtherCAT configuration file.
  
