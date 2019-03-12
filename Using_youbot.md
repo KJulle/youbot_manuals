@@ -41,7 +41,7 @@ Now you will have to set up the remote connection. For that you will need to kno
 To find the Youbot's IP address enter this command to the terminal:
 
 ```bash
-$ export ifconfig
+$ ifconfig
 ```
 
 Now you should see multiple ethernet devices. The one you need should be wlp2s0's inet addr which should be something like 192.168.x.x.
