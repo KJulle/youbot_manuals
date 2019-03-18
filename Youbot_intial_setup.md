@@ -46,9 +46,7 @@ Now go to catkin_ws/src and download the packages there with git.
 
 ```bash
 $ cd ~/catkin_ws/src
-$ git clone http://github.com/youbot/youbot_description.git -b kinetic-devel
-$ git clone https://github.com/youbot/youbot_driver_ros_interface.git -b indigo-devel
-$ git clone https://github.com/svenschneider/youbot-manipulation.git -b indigo
+$ git clone -b kinetic --recursive https://github.com/ut-ims-robotics/youbot.git
 ```
 
 Now you should be able to compile the workspace.
