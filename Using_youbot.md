@@ -35,7 +35,7 @@ $ catkin_make
 Now you will have to source the setup file. So you don't have to source it every time you open a new terminal we will write the source command in the .bashrc file.
 
 ```bash
-$ sudo gedit .bashrc
+$ gedit ~/.bashrc
 ```
 
 This will open the text editor. You will need to add this line to the end of the file if it not already there:
@@ -45,6 +45,8 @@ source ~/catkin_ws/devel/setup.bash
 ```
 
 Save the file and exit.
+
+Before continuing you will have to close and reopen the terminal for the sourcing to work.
 
 Now we will have to clone the youbot repository to our catkin workspace.
 
@@ -117,32 +119,34 @@ To find the youBot's IP address enter this command to the terminal:
 $ ifconfig
 ```
 
-Now you should see multiple ethernet devices. The one you need should be wlp2s0's inet addr which should be something like 192.168.x.x.
+Now you should see multiple ethernet devices. The one you need should be wlp2s0's inet addr which should be something like 10.42.x.x, where the x's are specific to your computer.
 
 To get your remote computer's IP, you need to repeat the same step, only the ethernet device name is probably different.
 
 If you have both IP addresses, you will have to specify ROS master aka youBot IP address on the remote computer:
 
 ```bash
-$ export ROS_MASTER_URI=http://192.168.x.x:11311
+$ export ROS_MASTER_URI=http://10.42.0.1:11311
 ```
 
 Next, specify the remote computer's own IP:
 
 ```bash
-$ export ROS_IP=192.168.x.x
+$ export ROS_IP=10.42.x.x
 ```
+
+Now check if your IP 
 
 Modify /etc/hosts file in order to resolve master's name to IP:
 
 ```bash
-$ sudo gedit /etc/hosts
+$ gedit /etc/hosts
 ```
 
 Add the following line to the end of the file:
 
 ```bash
-192.168.x.x    youbot
+10.42.0.1   youbot
 ```
 
 ### Establishing an ssh connection

@@ -23,7 +23,7 @@ $ catkin_make
 Now you will have to source the setup file. So you don't have to source it every time you open a new terminal we will write the source command in the .bashrc file.
 
 ```bash
-$ sudo gedit .bashrc
+$ sudo gedit ~/.bashrc
 ```
 
 This will open the text editor. You will need to add this line to the end of the file:
