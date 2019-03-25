@@ -1,6 +1,6 @@
 # Setting up KUKA Youbot
 
-This tutorial contains instructions on how to set up the KUKA Youbot onboard computer.
+** NB! This tutorial is for setting up the youBot's onboard computer from scratch. For a tutorial on how to use the robot go [here](https://github.com/ut-ims-robotics/youbot/tree/kinetic) instead. **
 
 ## Installing the operating system and ROS
 
@@ -9,6 +9,8 @@ First you will have to install Ubuntu 16.04 on the computer. There should be a f
 - Install Ubuntu 16.04 using [this tutorial](https://tutorials.ubuntu.com/tutorial/tutorial-install-ubuntu-desktop-1604#0).
 
 - Install the full desktop version of ROS Kinetic using [this tutorial](http://wiki.ros.org/kinetic/Installation/Ubuntu).
+
+** NB! The passwords and names for the youBot and the access point are in the IMS Lab wiki, so please use the same passwords and names that are given there or modify the current ones! **
 
 ## Making a workspace
 
@@ -84,6 +86,10 @@ EthernetDevice = eth0
 ```
 
 Instead of eth0, insert the device name that you got from ifconfig.
+
+## Setting up the access point
+
+
 
 
 
