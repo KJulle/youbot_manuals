@@ -3,10 +3,12 @@
 
 Instructions on how to move the arm and drive around with the robot.
 
-## Things you will need
+## 0 Things you will need
 * KUKA youBot - this robot has an onboard computer in it, so it will be referred to as such.
 
 * A computer with Ubuntu 16.04 and ROS Kinetic - referred to as a remote computer.
+
+* Access to IMS Lab wiki.
 
 If you need to install Ubuntu 16.04 or ROS Kinetic, the tutorials are here:
 
@@ -16,7 +18,10 @@ If you need to install Ubuntu 16.04 or ROS Kinetic, the tutorials are here:
 
 ---
 
-## Setting up the remote computer
+## 1 Setting up the remote computer
+
+Everything in this chapter will be done on the remote computer and all the commands(lines beginning with $) will have to be entered in the terminal.
+
 The first step is to download all the needed packages.
 
 ```bash
@@ -24,7 +29,7 @@ $ sudo apt-get install ros-kinetic-youbot-driver ros-kinetic-pr2-msgs ros-kineti
 $ sudo apt-get install ros-kinetic-ros-control ros-kinetic-ros-controllers ros-kinetic-gazebo-ros-control
 ```
 
-Next we will have to make the catkin workspace if it does not already exist. You can check in your home folder if there is a folder called catkin_ws and a folder called src in it. If yes, you will not have to do the next part, but nothing will break if you do.
+Next we will have to make the catkin workspace if it does not already exist. You can check in your home folder if there is a folder called catkin_ws and a folder called src in catkin_ws. If yes, you will not have to do the next part, but nothing will break if you do.
 
 ```bash
 $ mkdir -p ~/catkin_ws/src
@@ -66,7 +71,7 @@ If this completed without any errors, you can go to the next step.
 
 ---
 
-## Simulating the robot
+## 2 Simulating the robot
 
 To simulate the youBot you will only need the remote computer which you should already have set up in the previous step.
 
@@ -76,12 +81,12 @@ the only thing you will have to do is to run a gazebo simulation which will visu
 $ roslaunch youbot_gazebo_robot youbot.launch 
 ```
 
-The steps to manipulating the robot are the same as with the real youBot, so look under "Driving the robot" and "Moving the robot arm".
+The steps to manipulating the robot are the same as with the real youBot, so look under chapter 4 "Driving the robot" and chapter 5 "Moving the robot arm".
 
 ---
 
-## Running the real youBot
-### Powering the robot
+## 3 Running the real youBot
+### 3.1 Powering the robot
 
 Before turning on the robot you will have to connect the external power supply or battery. If you're not planning to drive the robot around, you should use only the external power supply to power the robot. The external power supply connects to a 24V input on the top of the base of the robot. The battery slides into the slot on the side of the robot and connects to a connector there.
 
@@ -89,7 +94,7 @@ To charge the battery connect both the battery and external power supply to the 
 
 **NB! Always disconnect the battery when not in use.**
 
-### Turning on the robot
+### 3.2 Turning on the robot
 
 Press the "ON/OFF"-button for a few seconds to turn on the power for the system. An orange light on the display will indicate that the System has been powered on successfully. Now you can turn on the motors and/or PC. To do this, press and hold the power button and when the screen shows PC on release the button to turn on the PC. Repeat the same step, only now release the button when the screen shows Motor on.
 
@@ -105,15 +110,19 @@ If you are logged in with ssh, you can do this by entering:
 $ sudo shutdown -h now
 ```
 
-### Setting up a remote connection
+### 3.3 Setting up a remote connection
 
 **NB! For the next steps the robot and your remote computer have to be in the same network.**
 
-By default the robot should be in the ??? network.
+By default the robot should be in the youBot's access point named youbot-wifi.
+
+**NB! The password for the access point and the youBot's onboard computer are in IMS Lab wiki. You can search youbot in the wiki and you will find it. Note that it is a secure page, so you will have  to be logged in.**
 
 Now you will have to set up the remote connection. For that you will need to know the youBot's and the remote computer's IP addresses.
 
-To find the youBot's IP address enter this command to the terminal:
+The youBot's IP address should be 10.42.0.1.
+
+To find the remote computer's IP address enter this command to the terminal:
 
 ```bash
 $ ifconfig
@@ -121,21 +130,26 @@ $ ifconfig
 
 Now you should see multiple ethernet devices. The one you need should be wlp2s0's inet addr which should be something like 10.42.x.x, where the x's are specific to your computer.
 
-To get your remote computer's IP, you need to repeat the same step, only the ethernet device name is probably different.
-
 If you have both IP addresses, you will have to specify ROS master aka youBot IP address on the remote computer:
 
 ```bash
 $ export ROS_MASTER_URI=http://10.42.0.1:11311
 ```
 
-Next, specify the remote computer's own IP:
+Next, specify the remote computer's own IP(change the IP to the one you got from your remote computer):
 
 ```bash
 $ export ROS_IP=10.42.x.x
 ```
 
-Now check if your IP 
+Now check if your IP addresses are actually changed:
+
+```bash
+$ echo $ROS_MASTER_URI
+$ echo $ROS_IP
+```
+
+See if the outputs are the same as you entered previously. If not, enter the commands again.
 
 Modify /etc/hosts file in order to resolve master's name to IP:
 
@@ -143,39 +157,49 @@ Modify /etc/hosts file in order to resolve master's name to IP:
 $ gedit /etc/hosts
 ```
 
-Add the following line to the end of the file:
+Add the following line under the hosts in the file:
 
 ```bash
 10.42.0.1   youbot
 ```
+Save and exit.
 
-### Establishing an ssh connection
+
+
+### 3.4 Establishing an ssh connection
 
 Now you can use ssh on your remote computer to log into the youBot's onboard computer.
 
-To establish an ssh connection, enter this to your remote computer's terminal: 
+First open a new terminal window(don't close the old one).
+
+To establish an ssh connection, enter this to your remote computer's new terminal window: 
 
 ```bash
-$ ssh youbot@192.168.x.x
+$ ssh youbot@10.42.0.1
 ```
+
+You will be asked to enter the onboard computer's password, which you can get from IMS Lab wiki.
 
 Now you should be logged into the onboard computer. That means that when you enter commands in the terminal window you have the ssh connection in, the commands will be run on the robot's onboard computer.
 
 If you need more terminal windows with an ssh connection, just use the same command above to  log in.
 
-### Running the youBot driver
+### 3.5 Running the youBot driver
 
-To work with the real youBot you will first have to run the youBot driver. This must be run on the youBot's onboard computer.
+For this driver to work, the youBot's motors and arm have to be turned on.
+
+To work with the real youBot you will first have to run the youBot driver. This must be run on the youBot's onboard computer, so if you're using a remote computer you will have to run this in the terminal with an ssh connection.
+
 
 ```bash
 $ roslaunch youbot_driver_ros_interface youbot_driver.launch
 ```
 
-The steps to manipulating the robot are the same as with simulating youBot, so look under "Driving the robot" and "Moving the robot arm".
+The steps to manipulating the robot are the same as with simulating youBot, so look under chapter 4 "Driving the robot" and 5 "Moving the robot arm".
 
 ---
 
-## Driving the robot
+## 4 Driving the robot
 
 **NB! If you're using it on the real youBot and the robot is on the table, make sure it is on a platform so it can't actually move.**
 
@@ -189,7 +213,7 @@ Now you should be able to control the wheels with your keyboard. Note that the k
 
 ---
 
-## Moving the robot arm
+## 5 Moving the robot arm
 
 You must have the youbot driver running before doing any of the following commands.
 
