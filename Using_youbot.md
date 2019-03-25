@@ -1,4 +1,3 @@
-# This tutorial is not complete yet
 # Using KUKA youBot
 
 Instructions on how to move the arm and drive around with the robot.
@@ -225,7 +224,7 @@ You must have the youbot driver running before doing any of the following comman
 To move the arm, you need to launch this demo file. If you're using the real youBot, you will have to run this in the terminal where you set your ROS master in.
 
 ```bash
-$ roslaunch youbot_moveit real_demo.launch
+$ roslaunch youbot_moveit demo.launch
 ```
 
 By default this will open rviz, where you should now be able to see the robot model.
