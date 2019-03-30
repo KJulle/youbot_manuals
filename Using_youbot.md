@@ -17,6 +17,10 @@ If you need to install Ubuntu 16.04 or ROS Kinetic, the tutorials are here:
 
 ---
 
+```diff
+- Red text example.
+```
+
 ## 1 Setting up the remote computer
 
 Everything in this chapter will be done on the remote computer and all the commands (lines beginning with $) will have to be entered in the terminal.
@@ -27,9 +31,7 @@ The first step is to download all the needed packages.
 $ sudo apt-get install ros-kinetic-youbot-driver ros-kinetic-pr2-msgs ros-kinetic-brics-actuator ros-kinetic-moveit git ros-kinetic-ros-control ros-kinetic-ros-controllers ros-kinetic-gazebo-ros-control
 ```
 
-Next we will have to create the catkin workspace if it does not already exist. You can check in your home folder if there is a folder called catkin_ws and a folder called src in catkin_ws. If yes, you will not have to do the next part, but nothing will break if you do.
-
-//need catkin_ws if you do not have it do this
+Next, you will need a catkin workspace. If you do not have it, use the following commands to create it.
 
 ```bash
 $ mkdir -p ~/catkin_ws/src
@@ -92,27 +94,29 @@ Before turning on the robot you will have to connect the external power supply o
 
 To charge the battery connect both the battery and external power supply to the robot at the same time.
 
-**NB! Always disconnect the battery when not in use.**
+#### `NB! ALWAYS DISCONNECT BATTERY WHEN NOT IN USE!`
 
 ### 3.2 Turning on the robot 
 
-//alapeatükid on ja off eraldi
+Press the "ON/OFF"-button on the top of the robot's base for a few seconds to turn on the power for the system. An orange light on the display will indicate that the system has been powered on successfully. Now you can turn on the motors and/or PC. To do this, press and hold the power button and when the screen shows `PC on`, release the button to turn on the PC. To turn on the motors, repeat the same step, only now release the button when the screen shows `Motor on`.
 
-Press the "ON/OFF"-button on the top of the robot's base for a few seconds to turn on the power for the system. An orange light on the display will indicate that the system has been powered on successfully. Now you can turn on the motors and/or PC. To do this, press and hold the power button and when the screen shows *PC on*, release the button to turn on the PC. To turn on the motors, repeat the same step, only now release the button when the screen shows *Motor on*.
-
-After the motors have been turned on find the button...
-
-The arm has to be turned on separately. When the motors are on, there is a button on the base of the arm with a red light. To turn on the arm, press the button. The light is green when the arm is turned on.
+The arm has to be turned on separately. After the motors have been turned on find the red button on the base of the arm. Press it to turn on the arm. The button will turn green when the arm is on. 
 
 **NB! When you turn off the power of the arm, it will NOT hold its position and will collapse, so make sure to support the arm when turning it off.**
 
-To turn off the system press and hold the "ON/OFF"-button and release when the screen shows *System off*. You should also power off the PC manually before turning off the system.
+### 3.3 Turning off the robot 
 
-If you are logged in with ssh, you can do this by entering:
+Before turning off the robot you should first shut down the onboard computer. If you are logged in with ssh, you can do this by entering:
 
 ```bash
 $ sudo shutdown -h now
 ```
+
+To turn off the system press and hold the "ON/OFF"-button and release when the screen shows `System off`. You should also power off the PC manually before turning off the system.
+
+
+
+
 
 ### 3.3 Establishing an ssh connection
 
