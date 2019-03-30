@@ -11,6 +11,8 @@ Instructions on how to move the arm and drive around with the robot.
 
 If you need to install Ubuntu 16.04 or ROS Kinetic, the tutorials are here:
 
+- You can download the 64-bit desktop version of Ubuntu 16.04 from [here](http://releases.ubuntu.com/16.04/) and put it on a flash drive. There should also already be a flash drive with Ubuntu 16.04 in the robotics room.
+
 - Install Ubuntu 16.04 using [this tutorial](https://tutorials.ubuntu.com/tutorial/tutorial-install-ubuntu-desktop-1604#0).
 
 - Install the full desktop version of ROS Kinetic using [this tutorial](http://wiki.ros.org/kinetic/Installation/Ubuntu).
