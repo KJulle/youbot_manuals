@@ -89,6 +89,10 @@ Instead of eth0, insert the device name that you got from ifconfig.
 
 ## Setting up the access point
 
+For easier remote access we will set up the youBot as an access point.
+
+To do that you will have to open ...
+
 
 
 
