@@ -90,11 +90,11 @@ To continue working with the simulated robot look under chapter 4 and 5.
 ## 3 Working on the real youBot
 ### 3.1 Powering the robot
 
-Before turning on the robot you will have to connect the external power supply or battery. If you're not planning to drive the robot around, you should use only the external power supply to power the robot. The external power supply connects to a 24V input on the top of the base of the robot. The battery slides into the slot on the side of the robot and connects to a connector there.
+Before turning on the robot you will have to connect the external power supply or battery. If you are not planning to drive the robot around, you should use only the external power supply to power the robot. The external power supply connects to a 24V input on the top of the base of the robot. The battery slides into the slot on the side of the robot and connects to a connector there.
 
 To charge the battery connect both the battery and external power supply to the robot at the same time.
 
-#### `NB! ALWAYS DISCONNECT BATTERY WHEN NOT IN USE!`
+### `NB! ALWAYS DISCONNECT BATTERY WHEN NOT IN USE!`
 
 ### 3.2 Turning on the robot 
 
@@ -112,39 +112,31 @@ Before turning off the robot you should first shut down the onboard computer. If
 $ sudo shutdown -h now
 ```
 
-To turn off the system press and hold the "ON/OFF"-button and release when the screen shows `System off`. You should also power off the PC manually before turning off the system.
+To turn off the rest of the system press and hold the "ON/OFF"-button and release when the screen shows `System off`.
 
-
-
-
-
-### 3.3 Establishing an ssh connection
+### 3.4 Establishing an ssh connection
 
 **NB! For the next steps the robot and your remote computer have to be in the same network.**
 
-By default the robot needs to be connected to the youBot's access point named youbot-wifi.
+By default the robot should already be connected to the youBot's access point named youbot-wifi. Y
 
-**NB! The password for the access point and the youBot's onboard computer are in IMS Lab wiki.**
-To access the 
+You will find the password for the network in IMS Lab wiki.
 
-If you're connected you can establish
-
-To establish an ssh connection, enter this to your remote computer's new terminal window: 
+If the robot and your remote computer are both connected to the youbot-wifi network, you can establish an ssh connection. To do this, enter this to your remote computer's terminal window: 
 
 ```bash
 $ ssh youbot@10.42.0.1
 ```
 
-Use the password provided in IMS Lab wiki.
+Use the password provided in IMS Lab wiki to log in.
 
-Now you should be logged into the onboard computer. That means that when you enter commands in the terminal window you have the ssh connection in, the commands will be run on the robot's onboard computer.//do sth w/ that 
+Now you are logged into the onboard computer. That means when you enter commands in that window, they will actually be run on the onboard computer.
 
 If you need more terminal windows with an ssh connection, just use the same command above to  log in.
 
+### 3.5 Setting up a remote ROS connection
 
-### 3.4 Setting up a remote ROS connection
-
-First open a new terminal window (don't close the old one).
+First open a new terminal window (do not close the old one).
 
 Now set up the remote connection. For that you will need to know the youBot's and the remote computer's IP addresses.
 
@@ -179,13 +171,13 @@ $ echo $ROS_IP
 
 See if the outputs are the same as you entered previously. If not, enter the commands again.
 
-If you need multiple terminals with a ROS master, you just need to insert the two export commands in a new terminal window.// saab ka bashrcsse b
+If you need multiple terminals with a ROS master, you just need to insert the two export commands in a new terminal window. You could also write the two export commands in the .bashrc file mentioned in chapter 1, which means the commands are executed every time you open a new terminal window.
 
-### 3.5 Running the youBot driver
+### 3.6 Running the youBot driver
 
 For this driver to work, the youBot's motors and arm have to be turned on.
 
-To work with the real youBot you will first have to run the youBot driver. This must be run on the youBot's onboard computer, so if you're using a remote computer you will have to run this in the terminal with an ssh connection.
+To work with the real youBot you will first have to run the youBot driver. This must be run on the youBot's onboard computer, so if you are using a remote computer you will have to run this in the terminal with an ssh connection.
 
 This will also start roscore so you do not have to run that manually.
 
@@ -193,13 +185,13 @@ This will also start roscore so you do not have to run that manually.
 $ roslaunch youbot_driver_ros_interface youbot_driver.launch
 ```
 
-Now your robot has been set up so you can continue
+Now your robot has been set up so you can continue with chapter 4 and 5.
 
 ---
 
 ## 4 Driving the robot
 
-**NB! If you're using the real youBot and the robot is on the table, make sure it is on a platform so it can't actually move.**
+### `NB! IF YOU ARE USING THE REAL YOUBOT AND THE ROBOT IS ON THE TABLE, MAKE SURE IT IS ON A PLATFORM SO IT CANNOT ACTUALLY MOVE!`
 
 To control the robot, run keyboard_teleop. If you are using the real youBot, run this in the terminal window where you set your ROS master in.
 
@@ -209,32 +201,31 @@ The instructions on which keys to press will be displayed in the terminal window
 $ rosrun youbot_driver_ros_interface youbot_keyboard_teleop.py
 ```
 
-Now you should be able to control the wheels with your keyboard. Note that the keyboard teleop only works when the terminal window where you gave the command is active.
+Now you will be able to control the wheels with your keyboard. Note that the keyboard_teleop only works when the terminal window where you gave the command is active.
 
 ---
 
 ## 5 Moving the robot arm
 
-To move the arm, you need to launch this demo file. If you're using the real youBot, run this in the terminal window where you set your ROS master in.
+To move the arm launch this demo file. If you are using the real youBot, run this in the terminal window where you set your ROS master in.
 
 ```bash
 $ roslaunch youbot_moveit demo.launch
 ```
 
-By default this will open RViz, where you should now be able to see the robot model.
+By default this will open RViz, where you will now be able to see the robot model.
 
-**NB! Make sure the robot model arm position in RViz is the same as in real life before proceeding.**
+### `NB! MAKE SURE THE ROBOT MODEL ARM POSITION IN RVIZ IS THE SAME AS IN REAL LIFE BEFORE PROCEEDING!`
 
-To move the arm, first you can drag the marker on the top of the robot arm in rviz to the wanted position. In the conext tab you can select a planning library (for example RRTkConfigDefault). 
+To move the arm, first you can drag the marker on the top of the robot arm in RViz to the wanted position. In the context tab you can select a planning library (for example RRTkConfigDefault). 
 
+Next, on the planning tab press `Plan`. 
 
-Next, on the planning tab press *Plan*. 
-
-** NB! Always plan before executing. **
+### `NB! ALWAYS PLAN BEFORE EXECUTING!`
 
 Now you can see the trajectory the arm will make when moving into the wanted position. Make sure that the planned trajectory will not damage the robot.
 
-To execute the planned trajectory, press *Execute*.
+To execute the planned trajectory, press `Execute`.
 
 **Note:** Every time you plan/execute the trajectory, make sure that "Select Start State" option is "current", in section "Query" under tab "Planning". Otherwise the robot will plan from previous starting state, which may end up with damaging movement.
 
