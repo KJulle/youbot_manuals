@@ -104,7 +104,7 @@ Press the "ON/OFF"-button on the top of the robot's base for a few seconds to tu
 
 The arm has to be turned on separately. After the motors have been turned on find the red button on the base of the arm. Press it to turn on the arm. The button will turn green when the arm is on. 
 
-**NB! When you turn off the power of the arm, it will NOT hold its position and will collapse, so make sure to support the arm when turning it off.**
+### `NB! WHEN YOU TURN OFF THE POWER OF THE ARM, IT WILL NOT HOLD ITS POSITION AND WILL COLLAPSE, SO MAKE SURE TO SUPPORT THE ARM WHEN TURNING IT OFF!`
 
 ### 3.3 Turning off the robot 
 
