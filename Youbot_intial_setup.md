@@ -91,7 +91,19 @@ Instead of eth0, insert the device name that you got from ifconfig.
 
 For easier remote access we will set up the youBot as an access point.
 
-To do that you will have to open ...
+To do that you will have to open Network Connections.
+
+Click Add and choose Wi-Fi.
+
+Next, under the Wi-Fi tab choose Mode: Hotspot and Device(there is only one available). Enter the SSID and connection name as youbot-wifi.
+
+Under the General tab, check that the option Automatically connect to this network when it is available is checked.
+
+Under the Wi-Fi Security tab choose Security: WEP 40/128-bit Key enter the password.
+
+Click Save.
+
+Now on the next reboot, the system should automatically make and connect to this network.
 
 
 
