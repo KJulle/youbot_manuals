@@ -104,7 +104,7 @@ Press the "ON/OFF"-button on the top of the robot's base for a few seconds to tu
 
 The arm has to be turned on separately. After the motors have been turned on find the red button on the base of the arm. Press it to turn on the arm. The button will turn green when the arm is on. 
 
-### `NB! WHEN YOU TURN OFF THE POWER OF THE ARM, IT WILL NOT HOLD ITS POSITION AND WILL COLLAPSE, SO MAKE SURE TO SUPPORT THE ARM WHEN TURNING IT OFF!`
+#### `NB! WHEN YOU TURN OFF THE POWER OF THE ARM, IT WILL NOT HOLD ITS POSITION AND WILL COLLAPSE, SO MAKE SURE TO SUPPORT THE ARM WHEN TURNING IT OFF!`
 
 ### 3.3 Turning off the robot 
 
@@ -193,7 +193,7 @@ Now your robot has been set up so you can continue with chapter 4 and 5.
 
 ## 4 Driving the robot
 
-### `NB! IF YOU ARE USING THE REAL YOUBOT AND THE ROBOT IS ON THE TABLE, MAKE SURE IT IS ON A PLATFORM SO IT CANNOT ACTUALLY MOVE!`
+#### `NB! IF YOU ARE USING THE REAL YOUBOT AND THE ROBOT IS ON THE TABLE, MAKE SURE IT IS ON A PLATFORM SO IT CANNOT ACTUALLY MOVE!`
 
 To control the robot, run keyboard_teleop. If you are using the real youBot, run this in the terminal window where you set your ROS master in.
 
@@ -217,13 +217,13 @@ $ roslaunch youbot_moveit demo.launch
 
 By default this will open RViz, where you will now be able to see the robot model.
 
-### `NB! MAKE SURE THE ROBOT MODEL ARM POSITION IN RVIZ IS THE SAME AS IN REAL LIFE BEFORE PROCEEDING!`
+#### `NB! MAKE SURE THE ROBOT MODEL ARM POSITION IN RVIZ IS THE SAME AS IN REAL LIFE BEFORE PROCEEDING!`
 
 To move the arm, first you can drag the marker on the top of the robot arm in RViz to the wanted position. In the context tab you can select a planning library (for example RRTkConfigDefault). 
 
 Next, on the planning tab press `Plan`. 
 
-### `NB! ALWAYS PLAN BEFORE EXECUTING!`
+#### `NB! ALWAYS PLAN BEFORE EXECUTING!`
 
 Now you can see the trajectory the arm will make when moving into the wanted position. Make sure that the planned trajectory will not damage the robot.
 
