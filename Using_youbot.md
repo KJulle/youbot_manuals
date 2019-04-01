@@ -96,7 +96,7 @@ Before turning on the robot you will have to connect the external power supply o
 
 To charge the battery connect both the battery and external power supply to the robot at the same time.
 
-### `NB! ALWAYS DISCONNECT BATTERY WHEN NOT IN USE!`
+#### `NB! ALWAYS DISCONNECT BATTERY WHEN NOT IN USE!`
 
 ### 3.2 Turning on the robot 
 
